@@ -1,13 +1,13 @@
 import csv
 class Participante:
     def __init__(self, idParticipante, nombre, apellido, edad, sexo):
-        self.idParticipante = id
+        self.idParticipante = idParticipante
         self.nombre = nombre
         self.apellido = apellido
         self.edad = edad
         self.sexo = sexo
     def __str__(self):
-        return 'ID:{}: la persona es de nombre {}, apellido {}, tiene {} años y es de sexo {}.'.format(self.id, self.nombre, self.apellido, self.edad, self.sexo)
+        return 'ID:{}: la persona es de nombre {}, apellido {}, tiene {} años y es de sexo {}.'.format(self.idParticipante, self.nombre, self.apellido, self.edad, self.sexo)
     
 
 class Disparo(Participante):
@@ -21,7 +21,7 @@ class Disparo(Participante):
     def __str__(self):
         return ('{}, {}, {}, {}, {}, {:3f}, {:3f}, {:3f}, {:3f}, {:3f}'.format(self.idParticipante, self.nombre, self.apellido, self.edad, self.sexo, self.disparo3, self.disparo2, self.disparo3, self.mejorDisparo, self.promedioDisparo))
 
-class Concurso:
+class Concurso():
     participantes=[]
 
     def agregarParticipante(self, disparo):
@@ -40,21 +40,19 @@ class Concurso:
     
     def mostrarPodio(self):
         print('\n\nLos mejores participantes son: ')
-        print('\nId Part., Nombre, Apellido, Edad, Sexo, Dist.1, Dist.2, Dist.3, MejorDisparo, PromedioDisparo\n')
+        print('\nId Part., Nombre, Apellido, Edad, Sexo, Disparo.1, Disparo.2, Disparo.3, MejorDisparo, PromedioDisparo\n')
         self.ordenar()
         for p in range(3):
             print(self.participantes[p])
 
     def mostrarCantidadParticipantes(self):
         print('\n\nFueron: {}\n el total de los participantes'.format(len(self.participantes)))
-        pass
 
     def mostrarUltimo(self):
         self.ordenar()
         print('\n\nEl último participante fue: \n')
         print('Id Part., Nombre, Apellido, Edad, Sexo, Disparo.1, Disparo.2, Disparo.3, MejorDisparo, PromedioDisparo\n')
         print(self.participantes[-1])
-        pass
 
     def listarporedad(self):
         print('\n\nParticipantes ordenados por edad:')
@@ -62,7 +60,7 @@ class Concurso:
             for j in range(len(self.participantes)-1-i):
                 if self.participantes[i].edad>self.participantes[i+j+1].edad:
                     self.participantes[i],self.participantes[i+j+1]=self.participantes[i+j+1],self.participantes[i]
-        self.mostrarUltimo()
+        self.mostrarParticipantes()
 
     def promedio(self):
         suma=0
@@ -77,5 +75,5 @@ class Concurso:
             archconcurso=csv.writer(archivo)
             archconcurso.writerow(['Id Part.', 'Nombre', 'Apellido', 'Edad', 'Sexo', 'Disparo.1', 'Disparo.2', 'Disparo.3', 'MejorDisparo', 'PromedioDisparo'])
             for elem in self.participantes:                
-                registro=[elem.id, elem.nom, elem.ape, elem.edad, elem.sexo, elem.dist1, elem.dist2, elem.dist3, sorted([elem.dist1, elem.dist2, elem.dist3])[0], ((elem.dist1+elem.dist2+elem.dist3)/3)]
+                registro=[elem.idParticipante, elem.nombre, elem.apellido, elem.edad, elem.sexo, elem.disparo1, elem.disparo2, elem.disparo3, sorted([elem.disparo1, elem.disparo2, elem.disparo3])[0], ((elem.disparo1+elem.disparo2+elem.disparo3)/3)]
                 archconcurso.writerow(registro)
