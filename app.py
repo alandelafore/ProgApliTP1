@@ -1,0 +1,26 @@
+from clases import Participante, Disparo, Concurso
+concurso=Concurso()
+idParticipante=int(input('Ingrese el número de participante (Ingrese 0 para finalizar):'))
+
+while idParticipante > 0:
+    nombreParticipante = input('Ingrese nombre de participante: ')
+    apellidoParticipante = input('Ingrese apellido de participante: ')
+    edadParticipante = int(input('Ingrese edad de participante: '))
+    sexoParticipante = input('Ingrese el sexo del participante (F/M):')
+    x1 = int(input('Ingrese distancia x disparo 1: '))
+    y1 = int(input('Ingrese distancia y disparo 1: '))
+    x2 = int(input('Ingrese distancia x disparo 2: '))
+    y2 = int(input('Ingrese distancia y disparo 2: '))
+    x3 = int(input('Ingrese distancia x disparo 3: '))
+    y3 = int(input('Ingrese distancia y disparo 3: '))
+    disparo = Disparo(idParticipante, nombreParticipante, apellidoParticipante, edadParticipante, sexoParticipante, x1, y1, x2, y2, x3, y3)
+    concurso.agregarParticipante(disparo)
+    idParticipante=int(input('Ingrese el número de participante (Ingrese 0 para finalizar):'))
+concurso.mostrarParticipantes()
+concurso.mostrarPodio()
+concurso.mostrarUltimo()
+concurso.mostrarCantidadParticipantes()
+concurso.listarporedad()
+concurso.promedio()
+concurso.guardar()
+
