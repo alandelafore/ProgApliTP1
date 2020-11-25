@@ -16,6 +16,7 @@ while idParticipante > 0:
     disparo = Disparo(idParticipante, nombreParticipante, apellidoParticipante, edadParticipante, sexoParticipante, x1, y1, x2, y2, x3, y3)
     concurso.agregarParticipante(disparo)
     idParticipante=int(input('Ingrese el número de participante (Ingrese 0 para finalizar):'))
+input('Presione una tecla para finalizar')
 concurso.mostrarParticipantes()
 concurso.mostrarPodio()
 concurso.mostrarUltimo()
@@ -23,4 +24,4 @@ concurso.mostrarCantidadParticipantes()
 concurso.listarporedad()
 concurso.promedio()
 concurso.guardar()
-
+input('Presione una tecla para finalizar')

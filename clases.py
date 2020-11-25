@@ -1,7 +1,7 @@
 import csv
 class Participante:
-    def __init__(self, id, nombre, apellido, edad, sexo):
-        self.id = id
+    def __init__(self, idParticipante, nombre, apellido, edad, sexo):
+        self.idParticipante = id
         self.nombre = nombre
         self.apellido = apellido
         self.edad = edad
@@ -11,15 +11,15 @@ class Participante:
     
 
 class Disparo(Participante):
-    def __init__(self, id, nombre, apellido, edad, sexo, x1, y1, x2, y2, x3, y3):
-        Participante.__init__(self, id, apellido, nombre, edad, sexo)
+    def __init__(self, idParticipante, nombre, apellido, edad, sexo, x1, y1, x2, y2, x3, y3):
+        Participante.__init__(self, idParticipante, apellido, nombre, edad, sexo)
         self.disparo1=float((x1**2+y1**2)**.5)
         self.disparo2=float((x2**2+y2**2)**.5)
         self.disparo3=float((x3**2+y3**2)**.5)
         self.mejorDisparo=sorted([self.disparo1, self.disparo2, self.disparo3])[0]
         self.promedioDisparo=((self.disparo1+self.disparo2+self.disparo3)/3)
     def __str__(self):
-        return ('{}, {}, {}, {}, {}, {:3f}, {:3f}, {:3f}, {:3f}, {:3f}'.format(self.id, self.nombre, self.apellido, self.edad, self.sexo, self.disparo3, self.disparo2, self.disparo3, self.mejorDisparo, self.promedioDisparo))
+        return ('{}, {}, {}, {}, {}, {:3f}, {:3f}, {:3f}, {:3f}, {:3f}'.format(self.idParticipante, self.nombre, self.apellido, self.edad, self.sexo, self.disparo3, self.disparo2, self.disparo3, self.mejorDisparo, self.promedioDisparo))
 
 class Concurso:
     participantes=[]
@@ -62,7 +62,7 @@ class Concurso:
             for j in range(len(self.participantes)-1-i):
                 if self.participantes[i].edad>self.participantes[i+j+1].edad:
                     self.participantes[i],self.participantes[i+j+1]=self.participantes[i+j+1],self.participantes[i]
-        self.mostrar()
+        self.mostrarUltimo()
 
     def promedio(self):
         suma=0
