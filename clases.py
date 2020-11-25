@@ -65,7 +65,7 @@ class Concurso():
     def promedio(self):
         suma=0
         for i in self.participantes:
-            suma=suma+i.promdisp
+            suma=suma+i.promedioDisparo
             prom=suma/(len(self.participantes))
         print('\n\nEl promedio de los participantes fue: {:3f}\n'.format(prom))
         pass
